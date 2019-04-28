@@ -95,7 +95,7 @@ class StatusController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json($this->status->show($id));
     }
 
     /**
@@ -108,7 +108,7 @@ class StatusController extends Controller
      */
     public function edit($id)
     {
-        //
+        return response()->json($this->status->show($id));
     }
 
     /**
@@ -122,7 +122,34 @@ class StatusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            
+            $validator = Validator::make(
+                array(
+                    'name_status' => $request->name_status
+                ),
+                array(
+                    'name_status' => 'required'
+                ),
+                array(
+                    'name_status' => 'Favor informar o status!'
+                )
+            );
+        
+            if($validator->fails()){
+                $msg = $validator->messages()->getMessages();
+                return response()->json(['success' => false, 'message' => $msg]);
+            }
+
+            if (!$this->status->update($request, $id)) {
+                return response()->json(['success' => false, 'message' => "Falha ao atualizar o cadastro!"]);
+            }
+
+            return response()->json(['success' => true, 'message' => "Cadastro atualizado com sucesso!"]);
+
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -135,6 +162,11 @@ class StatusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            $this->status->delete($id);
+            return response()->json(['success' => true, 'message' => "Cadastro removido com sucesso!"]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+        }
     }
 }
