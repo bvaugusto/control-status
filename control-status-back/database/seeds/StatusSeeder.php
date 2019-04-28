@@ -16,8 +16,8 @@ class StatusSeeder extends Seeder
         DB::table('status')->delete();
 
         $status = [
-            ['id'=> 1, 'name' => 'Ativo'],
-            ['id'=> 2, 'name' => 'Inativo']
+            ['id'=> 1, 'name_status' => 'Ativo'],
+            ['id'=> 2, 'name_status' => 'Inativo']
         ];
 
         \App\Status::insert($status);

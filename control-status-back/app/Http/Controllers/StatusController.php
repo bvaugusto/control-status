@@ -2,10 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Status;
+use App\Repositories\StatusRepositoryEloquent;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class StatusController extends Controller
 {
+
+    /**
+     * Constructor
+     *
+     * @author Bruno Vasconcellos Augusto <bvaugusto@gmail.com>
+     * @version 1.0
+     * @return void
+     */
+    public function __construct(Status $status)
+    {
+        $this->status = new StatusRepositoryEloquent($status);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +32,17 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $arrayStatus = array();
+            foreach ($this->status->all() as $key => $value) {
+                $arrayStatus['data'][] = $value;
+            }
+            // return json_encode($arrayStatus);
+            return response()->json($arrayStatus);
+            // return response()->json($this->status->all());
+        } catch (\Throwable $th) {
+            return response()->json($th->getMessage());
+        }
     }
 
     /**

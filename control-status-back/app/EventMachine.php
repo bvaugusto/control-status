@@ -3,12 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EventMachine extends Model
 {
     use SoftDeletes;
 
-    public $table = "";
+    public $table = "event_machines";
     public $timestamps = true;
 
     /**

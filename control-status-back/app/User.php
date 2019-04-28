@@ -11,6 +11,7 @@ class User extends Authenticatable
 {
     use SoftDeletes;
     use Notifiable;
+    public $table = "users";
     public $timestamps = true;
 
     /**

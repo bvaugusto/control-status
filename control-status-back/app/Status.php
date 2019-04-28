@@ -3,12 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Status extends Model
 {
     use SoftDeletes;
-
-    public $table = "";
+    
+    public $table = "status";
     public $timestamps = true;
 
     /**
@@ -30,4 +31,13 @@ class Status extends Model
     protected $hidden = [
         'deleted_at', 'created_at', 'updated_at'
     ];
+
+    /**
+     * Opcional, informar a coluna deleted_at como um Mutator de data
+     *
+     * @author Bruno Vasconcellos Augusto <bvaugusto@gmail.com>
+     * @version 1.0
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
 }

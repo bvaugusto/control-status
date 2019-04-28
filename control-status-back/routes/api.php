@@ -55,5 +55,16 @@ Route::group(['prefix' => 'segment'], function()
 {
     Route::get('', 'SegmentController@index');
     Route::get('create', 'SegmentController@create');
-    
+});
+
+Route::group(['prefix'=> 'status'], function()
+{
+    Route::get('', 'StatusController@index');
+    Route::get('create', 'StatusController@create');
+    Route::post('', 'StatusController@store');
+    Route::get('{status}', 'StatusController@show');
+    Route::get('{status}/edit', 'StatusController@edit');
+    Route::put('{status}', 'StatusController@update');
+    Route::delete('{status}', 'StatusController@destroy');
+
 });

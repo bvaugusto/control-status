@@ -1,6 +1,8 @@
-<?php namespace App\Repositories\Contracts;
+<?php
 
-interface CompanyRepositoryInterface
+namespace App\Repositories\Contracts;
+
+interface StatusRepositoryInterface
 {
     public function all();
 
@@ -8,7 +10,8 @@ interface CompanyRepositoryInterface
 
     public function update(array $data, $id);
 
-    public function delete($id);
-
     public function show($id);
+
+    public function delete($id);
+    
 }
