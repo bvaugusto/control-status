@@ -1,5 +1,6 @@
 <?php
 
+use App\Status;
 use Illuminate\Database\Seeder;
 
 class StatusSeeder extends Seeder
@@ -20,6 +21,6 @@ class StatusSeeder extends Seeder
             ['id'=> 2, 'name_status' => 'Inativo']
         ];
 
-        \App\Status::insert($status);
+        Status::create($status);
     }
 }

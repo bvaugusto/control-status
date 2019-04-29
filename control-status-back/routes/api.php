@@ -68,3 +68,37 @@ Route::group(['prefix'=> 'status'], function()
     Route::delete('{status}', 'StatusController@destroy');
 
 });
+
+Route::group(['prefix'=> 'simulator'], function()
+{
+    Route::get('', 'SimulatorController@index');
+    Route::get('create', 'SimulatorController@create');
+    Route::post('', 'SimulatorController@store');
+    Route::get('{status}', 'SimulatorController@show');
+    Route::get('{status}/edit', 'SimulatorController@edit');
+    Route::put('{status}', 'SimulatorController@update');
+
+});
+
+Route::group(['prefix'=> 'machine'], function()
+{
+    Route::get('', 'MachineController@index');
+    Route::get('create', 'MachineController@create');
+    Route::post('', 'MachineController@store');
+    Route::get('{status}', 'MachineController@show');
+    Route::get('{status}/edit', 'MachineController@edit');
+    Route::put('{status}', 'MachineController@update');
+
+});
+
+Route::group(['prefix'=> 'eventmachine'], function()
+{
+    Route::get('', 'EventMachineController@index');
+    Route::get('create', 'EventMachineController@create');
+    Route::post('', 'EventMachineController@store');
+    Route::get('{status}', 'EventMachineController@show');
+    Route::get('{status}/edit', 'EventMachineController@edit');
+    Route::put('{status}', 'EventMachineController@update');
+    Route::delete('{status}', 'EventMachineController@destroy');
+
+});

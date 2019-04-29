@@ -11,6 +11,8 @@ class Simulator extends Model
     
     public $table = "simulators";
     public $timestamps = true;
+    public $incrementing = false;
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +21,7 @@ class Simulator extends Model
      * @version 1.0
      * @var array
      */
-    protected $fillable = ['minutes'];
+    protected $fillable = ['id', 'minutes'];
 
     /**
      * The attributes that should be hidden for arrays.

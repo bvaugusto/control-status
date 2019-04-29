@@ -15,8 +15,11 @@ class CreateEventMachinesTable extends Migration
     {
         Schema::create('event_machines', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->unsignedInteger('id_machine')->nullable();
             $table->unsignedInteger('id_status')->nullable();
+
+
             $table->timestamps();
             $table->softDeletes();
         });

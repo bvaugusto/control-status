@@ -14,7 +14,7 @@ class CreateSimulatorsTable extends Migration
     public function up()
     {
         Schema::create('simulators', function (Blueprint $table) {
-            $table->integer('id')->nullable();
+            $table->bigIncrements('id');
             $table->integer('minutes')->nullable();
             $table->timestamps();
             $table->softDeletes();

@@ -1,5 +1,6 @@
 <?php
 
+use App\Simulator;
 use Illuminate\Database\Seeder;
 
 class SimulatorSeeder extends Seeder
@@ -19,6 +20,6 @@ class SimulatorSeeder extends Seeder
             ['id'=> 1, 'minutes' => 5]
         ];
 
-        \App\Simulator::insert($simulators);
+        Simulator::create($simulators);
     }
 }

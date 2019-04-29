@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Status;
 use App\Repositories\StatusRepositoryEloquent;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -38,10 +39,12 @@ class StatusController extends Controller
                 $arrayStatus['data'][] = $value;
             }
             // return json_encode($arrayStatus);
-            return response()->json($arrayStatus);
+            return response()->json($arrayStatus)
+                ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
             // return response()->json($this->status->all());
-        } catch (\Throwable $th) {
-            return response()->json($th->getMessage());
+        } catch (\Exception $th) {
+            return response()->json($th->getMessage())
+                ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
         }
     }
 
@@ -67,6 +70,7 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
+
         $validator = Validator::make(
             array(
                 'name_status' => $request->name_status
@@ -78,10 +82,27 @@ class StatusController extends Controller
                 'name_status' => 'Favor informar o status!'
             )
         );
-        
+
         if($validator->fails()){
             $msg = $validator->messages()->getMessages();
-            return response()->json(['success' => false, 'message' => $msg]);
+            return response()->json(['success' => false, 'message' => $msg])
+                ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
+        }
+
+
+        try
+        {
+            $arrayStatus = array();
+            $arrayStatus['name_status'] = $request->name_status;
+
+            $this->status->create($arrayStatus);
+            return response()->json(['success' => true, 'message' => 'Cadastro realizado com sucesso!'])
+                ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
+        }
+        catch (\Exception $exception)
+        {
+            return response()->json($exception->getMessage())
+                ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
         }
     }
 
@@ -95,7 +116,8 @@ class StatusController extends Controller
      */
     public function show($id)
     {
-        return response()->json($this->status->show($id));
+        return response()->json($this->status->show($id))
+            ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
     }
 
     /**
@@ -108,7 +130,8 @@ class StatusController extends Controller
      */
     public function edit($id)
     {
-        return response()->json($this->status->show($id));
+        return response()->json($this->status->show($id))
+            ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
     }
 
     /**
@@ -138,17 +161,24 @@ class StatusController extends Controller
         
             if($validator->fails()){
                 $msg = $validator->messages()->getMessages();
-                return response()->json(['success' => false, 'message' => $msg]);
+                return response()->json(['success' => false, 'message' => $msg])
+                    ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
             }
 
-            if (!$this->status->update($request, $id)) {
-                return response()->json(['success' => false, 'message' => "Falha ao atualizar o cadastro!"]);
+            $arrayStatus = array();
+            $arrayStatus['name_status'] = $request->name_status;
+
+            if (!$this->status->update($arrayStatus, $id)) {
+                return response()->json(['success' => false, 'message' => "Falha ao atualizar o cadastro!"])
+                    ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
             }
 
-            return response()->json(['success' => true, 'message' => "Cadastro atualizado com sucesso!"]);
+            return response()->json(['success' => true, 'message' => "Cadastro atualizado com sucesso!"])
+                ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
 
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+            return response()->json(['success' => false, 'message' => $e->getMessage()])
+                ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
         }
     }
 
@@ -164,9 +194,11 @@ class StatusController extends Controller
     {
         try {
             $this->status->delete($id);
-            return response()->json(['success' => true, 'message' => "Cadastro removido com sucesso!"]);
+            return response()->json(['success' => true, 'message' => "Cadastro removido com sucesso!"])
+                ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => $e->getMessage()]);
+            return response()->json(['success' => false, 'message' => $e->getMessage()])
+                ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
         }
     }
 }

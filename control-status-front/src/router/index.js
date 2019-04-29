@@ -5,6 +5,9 @@ import MachineEdit from "../components/machine/MachineEdit";
 import Status from "../components/status/Status";
 import StatusCreate from "../components/status/StatusCreate";
 import StatusEdit from "../components/status/StatusEdit";
+import Simulator from "../components/simulator/Simulator";
+import SimulatorCreate from "../components/simulator/SimulatorCreate";
+import SimulatorEdit from "../components/simulator/SimulatorEdit";
 
 export const routes = [
   {
@@ -47,9 +50,28 @@ export const routes = [
     menu: false
   },
   {
-    path: "/status/create",
+    path: "/status/:id/edit",
     component: StatusEdit,
     title: "Edição de Status",
+    menu: false
+  },
+  {
+    path: "/simulator",
+    component: Simulator,
+    title: "Simulador",
+    icon: "fa fa-home",
+    menu: true
+  },
+  {
+    path: "/simulator/create",
+    component: SimulatorCreate,
+    title: "Cadastrar Simulação",
+    menu: false
+  },
+  {
+    path: "/simulator/:id/edit",
+    component: SimulatorEdit,
+    title: "Editar Simulação",
     menu: false
   }
 ];
