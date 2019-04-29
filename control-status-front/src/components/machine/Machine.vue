@@ -43,7 +43,7 @@
       deleteRow(rowData) {
         Axios.delete("http://127.0.0.1:8000/api/machine/" + rowData.id).then(
                 function(response) {
-                  Vue.toasted.show(response.data.message).goAway(3000);
+                  Vue.toasted.show(response.data.message).goAway(2000);
                   setTimeout(function() {
                     window.history.go();
                   }, 2000);

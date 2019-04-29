@@ -13,5 +13,7 @@ interface EventMachineRepositoryInterface
     public function show($id);
 
     public function delete($id);
+
+    public function deleteIdMachine($id);
     
 }

@@ -12,7 +12,7 @@
                     <!-- Input addon -->
                     <div class="box box-info">
                         <div class="box-body">
-                            <form ref="form" v-on:submit="onSubmit" method="post">
+                            <form ref="form" v-on:submit="onSubmitSimulator" method="post">
                                 <div class="form-group">
                                     <span class="form-group-addon">Minutos</span>
                                     <input
@@ -61,8 +61,8 @@
         created() {},
         watch: {},
         methods: {
-            onSubmit: function(e) {
-                store.dispatch("post-info-api", this.formDataSCreate);
+            onSubmitSimulator: function(e) {
+                store.dispatch("post-simulator-api", this.formDataSCreate);
                 this.$router.push('/simulator');
                 e.preventDefault();
             }

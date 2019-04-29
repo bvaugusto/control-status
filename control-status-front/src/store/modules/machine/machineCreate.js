@@ -10,7 +10,7 @@ const state = {
 const mutations = {};
 
 const actions = {
-    "post-info-api"(context, payload) {
+    "post-machine-api"(context, payload) {
         axios
             .post("http://127.0.0.1:8000/api/machine", payload)
             .then(function(response) {
@@ -20,7 +20,7 @@ const actions = {
                     }
                     return;
                 }
-                Vue.toasted.show(response.data.message).goAway(1500);
+                Vue.toasted.show(response.data.message).goAway(2000);
             });
     }
 };

@@ -10,7 +10,7 @@ const state = {
 const mutations = {};
 
 const actions = {
-    "update-info-api"(context, payload) {
+    "update-simulator-api"(context, payload) {
         axios
             .put("http://127.0.0.1:8000/api/simulator/" + payload.id, payload)
             .then(function(response) {
@@ -20,7 +20,7 @@ const actions = {
                     }
                     return;
                 }
-                Vue.toasted.show(response.data.message).goAway(1500);
+                Vue.toasted.show(response.data.message).goAway(2000);
             });
     }
 };

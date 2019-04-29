@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\GenerateEventMachine::class,
     ];
 
     /**
@@ -24,8 +24,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+         $schedule->command('machine:generate_event_machine')
+             ->everyMinute()
+             //->cron('1 * * * *')
+             ;
+                  //->everyMinute();
+        //*/1 * * * * php ~/control-status/control-status-back/ && php artisan schedule:run >> /dev/null 2>&1
     }
 
     /**

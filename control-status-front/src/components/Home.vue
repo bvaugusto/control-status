@@ -1,21 +1,9 @@
 <template>
   <div>
     <section class="content-header">
-      <h1>Máquina</h1>
-      <div class="box-header">
-        <router-link :to="`/machine/create`">
-          <button type="button" class="btn btn-primary pull-right">Novo</button>
-        </router-link>
-      </div>
+      <h1>Listagem Maquina/Status </h1>
     </section>
-    <vuetable ref="vuetable" api-url="http://127.0.0.1:8000/api/eventmachine" :fields="fields">
-      <template slot="actions" slot-scope="props">
-<!--        <div class="table-button-container">-->
-<!--          <i class="fa fa-edit" @click="editRow(props.rowData)" style="cursor: pointer;"></i>-->
-<!--          <i class="fa fa-remove" @click="deleteRow(props.rowData)" style="cursor: pointer;"></i>-->
-<!--        </div>-->
-      </template>
-    </vuetable>
+    <vuetable ref="vuetable" api-url="http://127.0.0.1:8000/api/eventmachine" :fields="fields"></vuetable>
   </div>
 </template>
 
@@ -32,24 +20,8 @@
         components: {
           "vuetable-pagination": Vuetable.VuetablePagination
         },
-        fields: [{ name: "id_machine", title: " Máquina" }, { name: "id_status", title: " Status" }, "__slot:actions"]
+        fields: [{ name: "name_machine", title: " Máquina" }, { name: "name_status", title: " Status" }, "__slot:actions"]
       };
-    },
-    methods: {
-      editRow(rowData)
-      {
-        this.$router.push('/machine/' + rowData.id + '/edit');
-      },
-      deleteRow(rowData) {
-        Axios.delete("http://127.0.0.1:8000/api/machine/" + rowData.id).then(
-                function(response) {
-                  Vue.toasted.show(response.data.message).goAway(3000);
-                  setTimeout(function() {
-                    window.history.go();
-                  }, 2000);
-                }
-        );
-      }
     }
   };
 </script>

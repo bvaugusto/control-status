@@ -12,7 +12,7 @@
           <!-- Input addon -->
           <div class="box box-info">
             <div class="box-body">
-              <form ref="form" v-on:submit="onSubmit" method="post">
+              <form ref="form" v-on:submit="onSubmitStatus" method="post">
                 <div class="form-group">
                   <span class="form-group-addon">Status</span>
                   <input
@@ -61,8 +61,8 @@
     created() {},
     watch: {},
     methods: {
-      onSubmit: function(e) {
-        store.dispatch("post-info-api", this.formDataStCreate);
+      onSubmitStatus: function(e) {
+        store.dispatch("post-status-api", this.formDataStCreate);
         this.$router.push('/status');
         e.preventDefault();
       }

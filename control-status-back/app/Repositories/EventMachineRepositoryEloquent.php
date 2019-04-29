@@ -48,4 +48,34 @@ class EventMachineRepositoryEloquent implements EventMachineRepositoryInterface
     {
         return $this->eventmachine->destroy($id);
     }
+
+    /**
+     *
+     * @return mixed
+     */
+    public function getAllEventMachine()
+    {
+        $arrayEvents = EventMachine::select('machines.name_machine', 'status.name_status', 'event_machines.created_at')
+            ->join('machines', 'machines.id', '=', 'event_machines.id_machine')
+            ->join('status', 'status.id', '=', 'event_machines.id_machine')
+            ->get();
+
+        return $arrayEvents;
+    }
+
+
+    /**
+     * Método responsável por inativar eventos antigos
+     *
+     * @param $id
+     * @return bool
+     */
+    public function deleteIdMachine($id)
+    {
+        EventMachine::where('id_machine', '=', $id)
+                ->whereNull('deleted_at')
+                ->delete();
+
+        return true;
+    }
 }

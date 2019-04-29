@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Input;
 
 class SimulatorController extends Controller
 {
+    protected $simulator;
+
     /**
      * Constructor
      *

@@ -73,7 +73,7 @@
         },
         methods: {
             onUpdate: function (e) {
-                store.dispatch("update-info-api", this.formDataMEdit);
+                store.dispatch("update-machine-api", this.formDataMEdit);
                 this.$router.push('/machine');
                 e.preventDefault();
             }

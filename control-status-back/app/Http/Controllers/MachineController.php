@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Input;
 
 class MachineController extends Controller
 {
+    protected $machine;
+
     /**
      * Constructor
      *

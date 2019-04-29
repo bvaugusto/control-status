@@ -19,7 +19,7 @@ class EventMachine extends Model
      * @version 1.0
      * @var array
      */
-    protected $fillable = ['id_machine', 'id_status'];
+    protected $fillable = ['id_machine', 'id_status', 'created_at'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -29,6 +29,6 @@ class EventMachine extends Model
      * @var array
      */
     protected $hidden = [
-        'deleted_at', 'created_at', 'updated_at'
+        'deleted_at', 'updated_at'
     ];
 }

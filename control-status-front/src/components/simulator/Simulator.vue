@@ -12,7 +12,6 @@
             <template slot="actions" slot-scope="props">
                 <div class="table-button-container">
                     <i class="fa fa-edit" @click="editRow(props.rowData)" style="cursor: pointer;"></i>
-                    <i class="fa fa-remove" @click="deleteRow(props.rowData)" style="cursor: pointer;"></i>
                 </div>
             </template>
         </vuetable>

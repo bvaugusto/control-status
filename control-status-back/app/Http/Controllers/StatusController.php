@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Input;
 
 class StatusController extends Controller
 {
+    protected $status;
 
     /**
      * Constructor

@@ -12,7 +12,7 @@
                     <!-- Input addon -->
                     <div class="box box-info">
                         <div class="box-body">
-                            <form ref="form" v-on:submit="onSubmit" method="post">
+                            <form ref="form" v-on:submit="onSubmitMachine" method="post">
                                 <div class="form-group">
                                     <span class="form-group-addon">Máquina</span>
                                     <input
@@ -61,10 +61,10 @@
         created() {},
         watch: {},
         methods: {
-            onSubmit: function(e) {
-                store.dispatch("post-info-api", this.formData);
-                this.$router.push('/machine');
+            onSubmitMachine: function(e) {
                 e.preventDefault();
+                store.dispatch("post-machine-api", this.formData);
+                this.$router.push('/machine');
             }
         }
     };

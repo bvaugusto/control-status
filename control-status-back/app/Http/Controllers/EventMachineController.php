@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Input;
 class EventMachineController extends Controller
 {
 
+    protected $eventmachine;
+
     /**
      * Constructor
      *
@@ -34,10 +36,12 @@ class EventMachineController extends Controller
     public function index()
     {
         try {
+
             $arrayEventMachine = array();
-            foreach ($this->eventmachine->all() as $key => $value) {
+            foreach ($this->eventmachine->getAllEventMachine() as $key => $value) {
                 $arrayEventMachine['data'][] = $value;
             }
+
             return response()->json($arrayEventMachine)
                 ->setStatusCode(Response::HTTP_OK, Response::$statusTexts[Response::HTTP_OK]);
         } catch (\Exception $th) {
