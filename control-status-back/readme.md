@@ -18,6 +18,10 @@
 
 -- php artisan schedule:run 
 
+## serve with hot reload http://127.0.0.1:8000
+
+-- php artisan serve
+
 ## Route
 
 -- eventmachine
