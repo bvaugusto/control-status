@@ -3,7 +3,7 @@
     <section class="content-header">
       <h1>Listagem Maquina/Status </h1>
     </section>
-    <vuetable ref="vuetable" api-url="http://127.0.0.1:8000/api/eventmachine" :fields="fields"></vuetable>
+    <vuetable ref="vuetable" api-url="http://control-status-back.herokuapp.com/public/api/eventmachine" :fields="fields"></vuetable>
   </div>
 </template>
 

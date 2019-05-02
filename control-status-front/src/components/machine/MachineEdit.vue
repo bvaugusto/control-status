@@ -65,7 +65,7 @@
         created() {
             let id = this.$route.params.id;
 
-            Axios.get(`http://127.0.0.1:8000/api/machine/` + id + `/edit`).then(
+            Axios.get(`http://control-status-back.herokuapp.com/public/api/machine/` + id + `/edit`).then(
                 response => {
                     this.formDataMEdit.name_machine = response.data.name_machine;
                     this.formDataMEdit.id = response.data.id;

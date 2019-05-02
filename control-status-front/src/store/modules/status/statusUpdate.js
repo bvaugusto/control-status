@@ -12,7 +12,7 @@ const mutations = {};
 const actions = {
     "update-status-api"(context, payload) {
         axios
-            .put("http://127.0.0.1:8000/api/status/" + payload.id, payload)
+            .put("http://control-status-back.herokuapp.com/public/api/status/" + payload.id, payload)
             .then(function(response) {
                 if (!response.data.success) {
                     for (var key in response.data.message) {

@@ -65,7 +65,7 @@
         created() {
             let id = this.$route.params.id;
 
-            Axios.get(`http://127.0.0.1:8000/api/simulator/` + id + `/edit`).then(
+            Axios.get(`http://control-status-back.herokuapp.com/public/api/simulator/` + id + `/edit`).then(
                 response => {
                     this.formDataSEdit.minutes = response.data.minutes;
                     this.formDataSEdit.id = response.data.id;

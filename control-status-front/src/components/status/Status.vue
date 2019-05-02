@@ -9,7 +9,7 @@
         </router-link>
       </div>
     </section>
-    <vuetable ref="vuetable" api-url="http://127.0.0.1:8000/api/status" :fields="fields">
+    <vuetable ref="vuetable" api-url="http://control-status-back.herokuapp.com/public/api/status" :fields="fields">
       <template slot="actions" slot-scope="props">
         <div class="table-button-container">
           <i class="fa fa-edit" @click="editRow(props.rowData)" style="cursor: pointer;"></i>
@@ -42,7 +42,7 @@ export default {
       this.$router.push('/status/' + rowData.id + '/edit');
     },
     deleteRow(rowData) {
-      Axios.delete("http://127.0.0.1:8000/api/status/" + rowData.id).then(
+      Axios.delete("http://control-status-back.herokuapp.com/public/api/status/" + rowData.id).then(
         function(response) {
           Vue.toasted.show(response.data.message).goAway(3000);
           setTimeout(function() {
