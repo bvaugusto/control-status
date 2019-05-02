@@ -8,7 +8,7 @@
 
 ## Run scripts
 
--- composer install && composer update && composer dump
+-- composer install && composer update && composer dump && php artisan key:generate
 
 -- php artisan migrate
 
@@ -16,11 +16,16 @@
 
 ## Run event alter status machine
 
+-- Add command crontab -e
+
+-- * * * * * php ~/control-status/control-status-back/artisan schedule:run
+
 -- php artisan schedule:run 
+   
 
 ## serve with hot reload http://127.0.0.1:8000
 
--- php artisan serve
+-- php artisan serve --host=127.0.0.1 --port=8000
 
 ## Route
 
