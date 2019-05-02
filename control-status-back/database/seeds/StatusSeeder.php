@@ -1,10 +1,19 @@
 <?php
 
-use App\Status;
 use Illuminate\Database\Seeder;
+use App\Repositories\StatusRepositoryEloquent;
+use App\Status;
 
 class StatusSeeder extends Seeder
 {
+
+    protected $status;
+
+    public function __construct(Status $status)
+    {
+        $this->status = new StatusRepositoryEloquent($status);
+    }
+    
     /**
      * Run the database seeds.
      *
@@ -14,13 +23,21 @@ class StatusSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('status')->delete();
+
+        $status = Status::whereNull('deleted_at')->get();
+        foreach ($status as $data)
+        {
+            $this->status->delete($data['id']);
+        }
 
         $status = [
-            ['id'=> 1, 'name_status' => 'Ativo'],
-            ['id'=> 2, 'name_status' => 'Inativo']
+            ['name_status' => 'Ativo'],
+            ['name_status' => 'Inativo']
         ];
 
-        Status::create($status);
+        foreach ($status as $k => $value)
+        {
+            $this->status->create($value);
+        }
     }
 }

@@ -45,7 +45,6 @@ class GenerateEventMachine extends Command
      */
     public function handle()
     {
-        $status = Status::inRandomOrder()->first();
         $machines = Machine::all();
 
         foreach ($machines as $k => $machine)

@@ -57,7 +57,7 @@ class EventMachineRepositoryEloquent implements EventMachineRepositoryInterface
     {
         $arrayEvents = EventMachine::select('machines.name_machine', 'status.name_status', 'event_machines.created_at')
             ->join('machines', 'machines.id', '=', 'event_machines.id_machine')
-            ->join('status', 'status.id', '=', 'event_machines.id_machine')
+            ->join('status', 'status.id', '=', 'event_machines.id_status')
             ->get();
 
         return $arrayEvents;

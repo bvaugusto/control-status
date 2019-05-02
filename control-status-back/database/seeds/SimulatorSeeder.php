@@ -1,10 +1,20 @@
 <?php
 
+use App\Repositories\SimulatorRepositoryEloquent;
 use App\Simulator;
 use Illuminate\Database\Seeder;
 
+
 class SimulatorSeeder extends Seeder
-{ 
+{
+
+    protected $simulator;
+
+    public function __construct(Simulator $simulator)
+    {
+        $this->simulator = new SimulatorRepositoryEloquent($simulator);
+    }
+
     /**
      * Run the database seeds.
      *
@@ -14,12 +24,12 @@ class SimulatorSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('simulators')->delete();
 
-        $simulators = [
-            ['id'=> 1, 'minutes' => 5]
-        ];
+        $this->simulator->delete(1);
 
-        Simulator::create($simulators);
+        $arraySimulator = array();
+        $arraySimulator['minutes'] = 5;
+
+        $this->simulator->create($arraySimulator);
     }
 }

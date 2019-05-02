@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Simulator;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\GenerateEventMachine::class,
+        'App\Console\Commands\GenerateEventMachine',
     ];
 
     /**
@@ -24,12 +25,20 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-         $schedule->command('machine:generate_event_machine')
-             ->everyMinute()
-             //->cron('1 * * * *')
+
+        $simulator = Simulator::orderBy('id', 'desc')->first();
+        $time = $simulator->minutes > 0 ? $simulator->minutes : 0;
+
+//        dd($time);
+
+        $schedule->command('machine:generate_event_machine')
+             ->timezone('America/Sao_Paulo')
+//             ->everyMinute()
+             ->cron('*/'.$time.' * * * *')
              ;
                   //->everyMinute();
         //*/1 * * * * php ~/control-status/control-status-back/ && php artisan schedule:run >> /dev/null 2>&1
+        //*/2 * * * * php ~/control-status/control-status-back/ && php artisan schedule:run >> /dev/null 2>&1
     }
 
     /**
