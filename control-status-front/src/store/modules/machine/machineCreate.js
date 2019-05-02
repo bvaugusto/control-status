@@ -12,7 +12,7 @@ const mutations = {};
 const actions = {
     "post-machine-api"(context, payload) {
         axios
-            .post("http://control-status-back.herokuapp.com/public/api/machine", payload)
+            .post("https://control-status-back.herokuapp.com/public/api/machine", payload)
             .then(function(response) {
                 if (!response.data.success) {
                     for (var key in response.data.message) {

@@ -65,7 +65,7 @@
     created() {
       let id = this.$route.params.id;
 
-      Axios.get(`http://control-status-back.herokuapp.com/public/api/status/` + id + `/edit`).then(
+      Axios.get(`https://control-status-back.herokuapp.com/public/api/status/` + id + `/edit`).then(
               response => {
                 this.formDataStEdit.name_status = response.data.name_status;
                 this.formDataStEdit.id = response.data.id;

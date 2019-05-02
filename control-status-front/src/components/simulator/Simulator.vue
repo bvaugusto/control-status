@@ -8,7 +8,7 @@
                 </router-link>
             </div>
         </section>
-        <vuetable ref="vuetable" api-url="http://control-status-back.herokuapp.com/public/api/simulator" :fields="fields">
+        <vuetable ref="vuetable" api-url="https://control-status-back.herokuapp.com/public/api/simulator" :fields="fields">
             <template slot="actions" slot-scope="props">
                 <div class="table-button-container">
                     <i class="fa fa-edit" @click="editRow(props.rowData)" style="cursor: pointer;"></i>
@@ -40,7 +40,7 @@
                 this.$router.push('/simulator/' + rowData.id + '/edit');
             },
             deleteRow(rowData) {
-                Axios.delete("http://control-status-back.herokuapp.com/public/api/simulator/" + rowData.id).then(
+                Axios.delete("https://control-status-back.herokuapp.com/public/api/simulator/" + rowData.id).then(
                     function(response) {
                         Vue.toasted.show(response.data.message).goAway(3000);
                         setTimeout(function() {

@@ -27,9 +27,11 @@
 
 -- php artisan serve --host=127.0.0.1 --port=8000
 
-## Route
+## Route / Endpoint Production
 
--- eventmachine
+## Eventmachine
+
+-- https://control-status-back.herokuapp.com/public/api/eventmachine
                                           
 GET|HEAD                               | api/eventmachine               
 POST                                   | api/eventmachine               
@@ -40,7 +42,9 @@ GET|HEAD                               | api/eventmachine/{status}
 GET|HEAD                               | api/eventmachine/{status}/edit 
 
 
--- macnihe
+## Machine
+
+-- https://control-status-back.herokuapp.com/public/api/machine
 
 POST                                   | api/machine                    
 GET|HEAD                               | api/machine                    
@@ -49,7 +53,9 @@ PUT                                    | api/machine/{status}
 GET|HEAD                               | api/machine/{status}           
 GET|HEAD                               | api/machine/{status}/edit      
             
--- simulator
+## Simulator
+
+-- https://control-status-back.herokuapp.com/public/api/simulator
 
 POST                                   | api/simulator                  
 GET|HEAD                               | api/simulator                  
@@ -58,7 +64,9 @@ GET|HEAD                               | api/simulator/{status}
 PUT                                    | api/simulator/{status}         
 GET|HEAD                               | api/simulator/{status}/edit    
 
--- status
+## Status
+
+-- https://control-status-back.herokuapp.com/public/api/status
 
 POST                                   | api/status                     
 GET|HEAD                               | api/status                     
